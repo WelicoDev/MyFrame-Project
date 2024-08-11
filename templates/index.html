@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Books</title>
+    <link rel="stylesheet" href="/static/main.css" type="text/css">
+</head>
+<body>
+<div id="login-form-wrapper">
+    <form id="login-form" method="post">
+        <label for="username">Username : </label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="password">Password : </label>
+        <input type="password" name="password" id="password" required>
+
+        <button id="login-button">Log In</button>
+    </form>
+</div>
+
+<br>
+    <h1>Books</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td><button data-id="{{ book.id }}" class="delete-button">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+<hr>
+<form id="create-form" method="post">
+    <label for="name">Name : </label>
+    <input type="text" name="name" id="name" required>
+
+        <label for="author">Author : </label>
+        <input type="text" name="author" id="author" required>
+
+        <button id="create-button">Create</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous">
+</script>
+<script src="/static/app.js"></script>
+</body>
+</html>
